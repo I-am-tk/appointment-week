@@ -1,42 +1,105 @@
 .appointment-table {
+  --grass1: hsl(116, 50%, 98.9%);
+  --grass2: hsl(120, 60%, 97.1%);
+  --grass3: hsl(120, 53.6%, 94.8%);
+  --grass4: hsl(121, 47.5%, 91.4%);
+  --grass5: hsl(122, 42.6%, 86.5%);
+  --grass6: hsl(124, 39%, 79.7%);
+  --grass7: hsl(126, 37.1%, 70.2%);
+  --grass8: hsl(131, 38.1%, 56.3%);
+  --grass9: hsl(131, 41%, 46.5%);
+  --grass10: hsl(132, 43.1%, 42.2%);
+  --grass11: hsl(133, 50%, 32.5%);
+  --grass12: hsl(130, 30%, 14.9%);
+
+  --blue1: hsl(206, 100%, 99.2%);
+  --blue2: hsl(210, 100%, 98%);
+  --blue3: hsl(209, 100%, 96.5%);
+  --blue4: hsl(210, 98.8%, 94%);
+  --blue5: hsl(209, 95%, 90.1%);
+  --blue6: hsl(209, 81.2%, 84.5%);
+  --blue7: hsl(208, 77.5%, 76.9%);
+  --blue8: hsl(206, 81.9%, 65.3%);
+  --blue9: hsl(206, 100%, 50%);
+  --blue10: hsl(208, 100%, 47.3%);
+  --blue11: hsl(211, 100%, 43.2%);
+  --blue12: hsl(211, 100%, 15%);
+
+  --mauve1: hsl(300, 20%, 99%);
+  --mauve2: hsl(300, 7.7%, 97.5%);
+  --mauve3: hsl(294, 5.5%, 95.3%);
+  --mauve4: hsl(289, 4.7%, 93.3%);
+  --mauve5: hsl(283, 4.4%, 91.3%);
+  --mauve6: hsl(278, 4.1%, 89.1%);
+  --mauve7: hsl(271, 3.9%, 86.3%);
+  --mauve8: hsl(255, 3.7%, 78.8%);
+  --mauve9: hsl(252, 4%, 57.3%);
+  --mauve10: hsl(253, 3.5%, 53.5%);
+  --mauve11: hsl(252, 4%, 44.8%);
+  --mauve12: hsl(260, 25%, 11%);
+
   --radius-md: 4px;
-  border: 1px solid gray;
+  --space-unit: 8px;
   border-radius: var(--radius-md);
   table-layout: fixed;
-  border-collapse: collapse;
+  /* border-collapse: collapse; */
+  color: var(--mauve11);
+  border: 1px solid var(--mauve6);
+  border-spacing: calc(var(--space-unit) / 2);
 }
 
 .appointment-table th,
 .appointment-table td {
-  border: 1px solid gray;
-  height: 40px;
+  border: 1px solid var(--mauve5);
+  border-radius: var(--radius-md);
+
+  /* see why: https://stackoverflow.com/questions/3542090/how-to-make-div-fill-td-height */
+  height: 1px;
+}
+
+.appointment-table th {
+  box-shadow: var(--mauve4) 0px 6px 24px 0px, var(--mauve3) 0px 0px 0px 1px;
+  font-weight: 500;
 }
 
 .group-title {
-  padding: 8px;
+  padding: var(--space-unit);
 }
 
 .slot {
-  padding: 8px;
+  padding: var(--space-unit);
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  color: var(--mauve3);
+  border-radius: var(--radius-md);
 }
 
 .slot.reserved {
-  background-color: skyblue;
+  background-color: var(--blue11);
   cursor: not-allowed;
 }
 
 .slot.available {
-  background-color: gainsboro;
+  color: var(--mauve9);
+  background-color: var(--mauve1);
 }
+
 .slot.available:hover {
-  background-color: greenyellow;
+  box-shadow: var(--mauve7) 0px 6px 24px 0px, var(--mauve8) 0px 0px 0px 1px;
+}
+
+.slot.available:not(.selected):hover {
+  background-color: var(--mauve5);
+  color: var(--mauve11);
 }
 
 .slot.selected {
-  background-color: green;
+  background-color: var(--grass11);
+  color: var(--mauve3);
+}
+.slot.selected:hover {
+  background-color: var(--grass10);
 }
