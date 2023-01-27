@@ -58,7 +58,8 @@ Here is the list of props it accepts and its uses. Required prop has italicized 
 
 ## Work in progress 🟠
 
-- Fix error 🔴 Slot should be with in start and end time .
+- Fix error 🔴 Slots time should be with in start and end time.
+- Add styles to the `Basic Example`
 - Add 12 hour format
 - check for from and to
   - 26 (should throw an error or default to 24)
