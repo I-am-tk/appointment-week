@@ -1,0 +1,42 @@
+.appointment-table {
+  --radius-md: 4px;
+  border: 1px solid gray;
+  border-radius: var(--radius-md);
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.appointment-table th,
+.appointment-table td {
+  border: 1px solid gray;
+  height: 40px;
+}
+
+.group-title {
+  padding: 8px;
+}
+
+.slot {
+  padding: 8px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.slot.reserved {
+  background-color: skyblue;
+  cursor: not-allowed;
+}
+
+.slot.available {
+  background-color: gainsboro;
+}
+.slot.available:hover {
+  background-color: greenyellow;
+}
+
+.slot.selected {
+  background-color: green;
+}
