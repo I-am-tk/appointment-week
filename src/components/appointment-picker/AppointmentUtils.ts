@@ -1,4 +1,4 @@
-import moment, { min } from "moment";
+import moment from "moment";
 import {
   DATE_TIME_FORMAT,
   DAYS_IN_WEEK,
@@ -84,12 +84,16 @@ export const getSlotsOnDate = <TAppointmentData extends IReqAppointmentData>({
     hours: to.hours,
     minutes: to.minutes,
   });
+  console.log({
+    startTime: startTime.toString(),
+    endTime: endTime.toString(),
+  });
 
   let slotTime = moment(startTime);
 
   while (
     slotTime.day() === startDate.day() &&
-    slotTime.toDate() <= endTime.toDate()
+    moment(slotTime).add({ minutes: slotDuration }).toDate() <= endTime.toDate()
   ) {
     const appointmentTimeKey = getDateTimeKey(slotTime.toDate());
     const appointment = appointmentsByTime.get(appointmentTimeKey);
@@ -142,7 +146,7 @@ export const getSlotAppointmentData = <
 }: IGetSlotAppointmentDateArgs<TAppointmentData>): TInternalSlotData<TAppointmentData>[][] => {
   const slotAppointmentData: TInternalSlotData<TAppointmentData>[][] = [];
 
-  // re-verifying the startWeeDate
+  // re-verifying the startWeekDate
   const startWeekDate = moment(dateOfWeek).startOf("week");
 
   const weekDates = getWeekDates(startWeekDate.toDate());

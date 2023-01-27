@@ -1,3 +1,4 @@
+import moment from "moment";
 import { useState } from "react";
 import {
   DAYS_IN_WEEK,
@@ -5,6 +6,7 @@ import {
   DEFAULT_MAX_RESERVATION_ALLOWED,
   DEFAULT_SLOT_DURATION,
   DEFAULT_START_HOUR,
+  WARNINGS,
 } from "./AppointmentConstants";
 import {
   IAppointmentPickerProps,
@@ -23,6 +25,12 @@ const AppointmentPicker = <TAppointmentData extends IReqAppointmentData>({
   className = "",
   maxReservationAllowed = DEFAULT_MAX_RESERVATION_ALLOWED,
 }: IAppointmentPickerProps<TAppointmentData>) => {
+  const totalDuration = findTotalDuration(dateOfWeek, from, to);
+  // slotDuration should divide totalDuration into equal slots.
+  if (totalDuration % slotDuration !== 0) {
+    throw new Error(WARNINGS.SLOT_DURATION_NOT_A_FACTOR_OF_TOTAL_DURATION);
+  }
+
   const initialSlots = getSlotAppointmentData({
     appointments,
     dateOfWeek,
@@ -72,8 +80,6 @@ const AppointmentPicker = <TAppointmentData extends IReqAppointmentData>({
     }
     setSlotGroups(updatedSlotGroups);
   };
-
-  const totalDuration = findTotalDuration(dateOfWeek, from, to);
 
   const renderTableTitles = () => {
     return (
