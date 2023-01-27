@@ -39,7 +39,8 @@ export const BasicExample = () => {
       renderTitle={(date) => (
         <div className={`group-title`}>{formatSlotTitle(date)}</div>
       )}
-      maxReservationAllowed={1}
+      maxReservationAllowed={3}
+      slotDuration={30}
     />
   );
 };
